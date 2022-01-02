@@ -4,8 +4,6 @@ User = get_user_model()
 
 
 class Post_0(models.Model):
-
-    # level = models.IntegerField(..., default=0)
     fio = models.CharField("ФИО", max_length=30)
     post = models.CharField("Должность", max_length=50)
     post_head = models.CharField("Начальник", max_length=50, default='none')
@@ -23,7 +21,6 @@ class Post_0(models.Model):
 
 
 class Post_1(models.Model):
-    # user = models.ForeignKey(User, verbose_name="ФИО", on_delete=models.CASCADE)
     fio = models.CharField("ФИО", max_length=30)
     post = models.CharField("Должность", max_length=50)
     post_head = models.ForeignKey(Post_0, verbose_name="Начальник", on_delete=models.SET_NULL, null=True)
