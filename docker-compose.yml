@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  dm_db:
+    image: postgres:12
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+  django:
+    container_name: dm_movie
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command:  bash -c "python  /usr/src/WebApp/manage.py migrate --noinput &&
+              python /usr/src/WebApp/manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/usr/src/WebApp
+    ports:
+      - 8000:8000
+    depends_on:
+      - db_db
+volumes:
+  pg_data:

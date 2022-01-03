@@ -76,17 +76,28 @@ TEMPLATES = [
 WSGI_APPLICATION = 'WebApp.wsgi.application'
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'example',
+#         'USER': 'admin_serg',
+#         'PASSWORD': 'rassamaha7012000',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
+# DOCKER DB
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'example',
-        'USER': 'admin_serg',
-        'PASSWORD': 'rassamaha7012000',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'PASSWORD': 123456,
+        'USER': 'postgres',
+        'HOST': 'dm_db',
+        'PORT': '5432'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
