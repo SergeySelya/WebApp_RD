@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django_seed',
     'debug_permissions',
     'django_celery_beat',
+    'rest_framework',
+    'rest_framework_api_key',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +131,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CELERY_BROKER_URL = 'redis: // localhost: 6379'
 CELERY_RESULT_BACKEND = 'redis: // localhost: 6379'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework_api_key.permissions.HasAPIKey',
+    ]
+}

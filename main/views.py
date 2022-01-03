@@ -5,6 +5,9 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 
+from rest_framework.views import APIView
+from rest_framework_api_key.permissions import HasAPIKey
+
 
 @login_required
 @permission_required('main.view_post_0', raise_exception=True)
@@ -16,7 +19,8 @@ def main(request):
     return render(request, 'main/main.html', context)
 
 
-class PostListView0 (PermissionRequiredMixin, generic.ListView):
+class PostListView0 (PermissionRequiredMixin, generic.ListView, APIView):
+    permission_classes = (HasAPIKey,)
     permission_required = 'main.view_post_0'
     model = Post_0
     context_object_name = 'info_0'
