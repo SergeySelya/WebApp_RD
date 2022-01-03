@@ -19,8 +19,7 @@ def main(request):
     return render(request, 'main/main.html', context)
 
 
-class PostListView0 (PermissionRequiredMixin, generic.ListView, APIView):
-    permission_classes = (HasAPIKey,)
+class PostListView0 (PermissionRequiredMixin, generic.ListView):
     permission_required = 'main.view_post_0'
     model = Post_0
     context_object_name = 'info_0'
@@ -60,7 +59,8 @@ class PostListView4 (PermissionRequiredMixin, generic.ListView):
     queryset = Post_4.objects.all()
 
 
-class PostListView5 (PermissionRequiredMixin, generic.ListView):
+class PostListView5 (PermissionRequiredMixin, generic.ListView, APIView):
+    permission_classes = (HasAPIKey,)
     permission_required = 'main.view_post_5'
     model = Post_5
     context_object_name = 'info_5'
